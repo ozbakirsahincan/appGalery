@@ -1,20 +1,32 @@
 import * as React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import HomeIndex from '../screens/Home/index'
-import ProfileIndex from '../screens/Profile/index'
+import ProfileIndex from '../screens/Profile/index';
+import HomeIndex from '../screens/Home/index';
 
-const Stack = createBottomTabNavigator()
+const BottomTabNavigator = createBottomTabNavigator();
+const StackNavigator = createStackNavigator();
 
-export default function AppNavigationContainer() {
+const HomeNavigator = () => {
+    return <BottomTabNavigator.Navigator initialRouteName={"HomeIndex"} screenOptions={{
+        headerShown:false
+    }}>
+        <BottomTabNavigator.Screen name={"HomeIndex"} component={HomeIndex} />
+        <BottomTabNavigator.Screen name={"ProfileIndex"} component={ProfileIndex} />
+    </BottomTabNavigator.Navigator>;
+};
+
+function AppNavigationContainer() {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName={"HomeIndex"}>
-                <Stack.Screen name={"HomeIndex"} component={HomeIndex} />
-                <Stack.Screen name={"ProfileIndex"} component={ProfileIndex} />
-            </Stack.Navigator>
+            <StackNavigator.Navigator screenOptions={{ 
+                headerShown:false
+            }}>
+                <StackNavigator.Screen name={'HomePage'} component={HomeNavigator} />
+            </StackNavigator.Navigator>
         </NavigationContainer>
-    )
-}
+    );
+};
+export default AppNavigationContainer;

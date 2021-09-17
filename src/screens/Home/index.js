@@ -1,24 +1,34 @@
 import React, {
     useState
 } from 'react'
-import { View, ScrollView } from 'react-native'
-import ImageList from '../Home/ImageList'
+import { View, ScrollView, StyleSheet } from 'react-native'
 
-const Home = (props) => {
-    const [image, setImage] = useState([])
+const Home = () => {
+    const [image, setImage] = useState([
+        {
+            id: "",
+            imageUrl: ""
+        }
+    ])
 
     const renderList = () => {
         return image.map((item) => {
-            return <ImageList key={item.image[0].id} />
+            return <View></View>
         })
     }
 
     return (
-        <View style={[{ flex: 1, paddingTop: 33 }]}>
+        <View style={styles.container}>
             <ScrollView >
                 {renderList()}
             </ScrollView>
         </View>
     )
 }
-export default Home
+const styles = StyleSheet.create({
+    container: {
+        paddingTop: 33,
+        flex: 1,
+    }
+});
+export default Home;
