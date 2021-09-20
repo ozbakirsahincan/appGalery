@@ -1,34 +1,56 @@
-import React, {
-    useState
-} from 'react'
-import { View, ScrollView, StyleSheet } from 'react-native'
+import React, {useState, useEffect} from 'react';
+import {View, StyleSheet, Text, FlatList, SafeAreaView} from 'react-native';
+import ImageList from '../Lists/ImageList';
 
-const Home = () => {
-    const [image, setImage] = useState([
-        {
-            id: "",
-            imageUrl: ""
-        }
-    ])
+const Home = ({navigation}) => {
+  const [data, setData] = useState([]);
+  const getData = async () => {
+    const apiURL = 'https://picsum.photos/v2/list?page=2&limit=100';
+    fetch(apiURL)
+      .then(res => res.json())
+      .then(resJson => {
+        setData(resJson);
+      });
+  };
+  useEffect(() => {
+    getData();
+    return () => {};
+  }, []);
 
-    const renderList = () => {
-        return image.map((item) => {
-            return <View></View>
-        })
-    }
-
-    return (
-        <View style={styles.container}>
-            <ScrollView >
-                {renderList()}
-            </ScrollView>
-        </View>
-    )
-}
+  const renderImages = ({item}) => <ImageList navigation={navigation} imageData={item} />;
+  return (
+    <SafeAreaView>
+      <View>
+        <Text style={{fontSize: 20, fontWeight: 'bold'}}>Galery App</Text>
+      </View>
+      <FlatList
+        style={styles.container}
+        data={data}
+        renderItem={renderImages}
+        keyExtractor={(item, index) => item.id.toString()}
+        
+      />
+    </SafeAreaView>
+  );
+};
 const styles = StyleSheet.create({
-    container: {
-        paddingTop: 33,
-        flex: 1,
-    }
+  container: {
+    marginTop: 20,
+    backgroundColor: '#f4fcff',
+  },
+  itemRow: {
+    borderBottomColor: '#ccc',
+    marginBottom: 10,
+    borderBottomWidth: 1,
+  },
+  itemImage: {
+    width: '50%',
+    height: 200,
+    resizeMode: 'cover',
+  },
+  itemText: {
+    fontSize: 16,
+    padding: 5,
+  },
 });
 export default Home;
