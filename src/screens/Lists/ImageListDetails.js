@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, SafeAreaView, Image, StyleSheet} from 'react-native';
+import {View, Text, SafeAreaView, Image} from 'react-native';
 import Styles from './Styles';
 
 export default function ImageListDetails({route}) {

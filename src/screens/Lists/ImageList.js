@@ -2,8 +2,6 @@ import React from 'react';
 import {
   View,
   Text,
-  StyleSheet,
-  Dimensions,
   Image,
   TouchableOpacity,
 } from 'react-native';
@@ -22,8 +20,5 @@ const ImageList = ({imageData, navigation}) => {
     </View>
   );
 };
-const styles = StyleSheet.create({
-  
-});
 
 export default ImageList;

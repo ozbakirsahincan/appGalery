@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, Text, FlatList, SafeAreaView} from 'react-native';
+import {View, Text, FlatList, SafeAreaView} from 'react-native';
 import ImageList from '../Lists/ImageList';
 import Styles from './Styles';
 
@@ -18,7 +18,9 @@ const Home = ({navigation}) => {
     return () => {};
   }, []);
 
-  const renderImages = ({item}) => <ImageList navigation={navigation} imageData={item} />;
+  const renderImages = ({item}) => (
+    <ImageList navigation={navigation} imageData={item} />
+  );
   return (
     <SafeAreaView>
       <View>
@@ -29,7 +31,6 @@ const Home = ({navigation}) => {
         data={data}
         renderItem={renderImages}
         keyExtractor={(item, index) => item.id.toString()}
-        
       />
     </SafeAreaView>
   );
