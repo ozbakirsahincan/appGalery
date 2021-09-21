@@ -3,9 +3,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import ProfileIndex from '../screens/Profile/index';
-import HomeIndex from '../screens/Home/index';
-import ImageListDetails from '../screens/Lists/ImageListDetails';
+import ImageListDetails from '../screens/lists';
+import ProfileIndex from '../screens/profile';
+import HomeIndex from '../screens/home';
 
 const BottomTabNavigator = createBottomTabNavigator();
 const StackNavigator = createStackNavigator();
@@ -26,7 +26,7 @@ const HomeNavigator = () => {
   );
 };
 
-function AppNavigationContainer() {
+const AppNavigationContainer = () => {
   return (
     <NavigationContainer>
       <StackNavigator.Navigator
@@ -34,9 +34,12 @@ function AppNavigationContainer() {
           headerShown: false,
         }}>
         <StackNavigator.Screen name={'HomePage'} component={HomeNavigator} />
-        <StackNavigator.Screen name={'ImageListDetails'} component={ImageListDetails} />
+        <StackNavigator.Screen
+          name={'ImageListDetails'}
+          component={ImageListDetails}
+        />
       </StackNavigator.Navigator>
     </NavigationContainer>
   );
-}
+};
 export default AppNavigationContainer;

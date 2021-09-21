@@ -1,15 +1,8 @@
-import React from 'react'
-import { View, Text, SafeAreaView, StyleSheet, ScrollView,Image } from 'react-native'
-import AppNavigationContainer from './src/Router/AppNavigationContainer'
-
-
-
+import React from 'react';
+import AppNavigationContainer from './src/router/appNavigationContainer';
 
 const App = () => {
-  return (
-    <AppNavigationContainer/>
-  )
-}
+  return <AppNavigationContainer />;
+};
 
-
-export default App
+export default App;

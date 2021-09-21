@@ -5,17 +5,17 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import Styles from './Styles';
+import {styles} from './styles';
 
 const ImageList = ({imageData, navigation}) => {
   return (
-    <View style={Styles.container}>
+    <View style={styles.container}>
       <TouchableOpacity
         onPress={() => navigation.navigate('ImageListDetails', {imageData})}>
-        <Image style={Styles.image} source={{uri: imageData.download_url}} />
+        <Image style={styles.image} source={{uri: imageData.download_url}} />
       </TouchableOpacity>
-      <View style={Styles.inner_container}>
-        <Text style={Styles.author}> {imageData.author} </Text>
+      <View style={styles.inner_container}>
+        <Text style={styles.author}> {imageData.author} </Text>
       </View>
     </View>
   );

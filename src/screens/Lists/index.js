@@ -1,12 +1,12 @@
 import React from 'react';
 import {View, Text, SafeAreaView, Image} from 'react-native';
-import Styles from './Styles';
+import {styles} from './styles';
 
-export default function ImageListDetails({route}) {
+const ImageListDetails =({route}) => {
   const props = route.params.imageData;
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View style={Styles.detailContainer}>
+      <View style={styles.container}>
         <Image
           style={{
             flex: 1,
@@ -14,7 +14,8 @@ export default function ImageListDetails({route}) {
           source={{uri: props.download_url}}
         />
       </View>
-      <Text style={Styles.detailAuthorText}>{props.author}</Text>
+      <Text style={styles.authorText}>{props.author}</Text>
     </SafeAreaView>
   );
 }
+export default ImageListDetails;

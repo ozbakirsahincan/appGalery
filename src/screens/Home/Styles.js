@@ -1,23 +1,27 @@
 import {StyleSheet} from 'react-native';
 
-export default StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
     backgroundColor: '#f4fcff',
+    marginTop: 20,
   },
   itemRow: {
     borderBottomColor: '#ccc',
-    marginBottom: 10,
     borderBottomWidth: 1,
+    marginBottom: 10,
   },
   itemImage: {
+    resizeMode: 'cover',
     width: '50%',
     height: 200,
-    resizeMode: 'cover',
   },
   itemText: {
     fontSize: 16,
     padding: 5,
   },
-  headerText: {fontSize: 25, fontWeight: 'bold',textAlign: 'center'},
+  headerText: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 25,
+  },
 });

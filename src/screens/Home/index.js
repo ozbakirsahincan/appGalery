@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, FlatList, SafeAreaView} from 'react-native';
-import ImageList from '../Lists/ImageList';
-import Styles from './Styles';
+import ImageList from '../../components/ImageList/index';
+import {styles} from './styles'
 
 const Home = ({navigation}) => {
   const [data, setData] = useState([]);
+
   const getData = async () => {
     const apiURL = 'https://picsum.photos/v2/list?page=2&limit=100';
     fetch(apiURL)
@@ -13,6 +14,7 @@ const Home = ({navigation}) => {
         setData(resJson);
       });
   };
+
   useEffect(() => {
     getData();
     return () => {};
@@ -24,10 +26,10 @@ const Home = ({navigation}) => {
   return (
     <SafeAreaView>
       <View>
-        <Text style={Styles.headerText}>Galery App</Text>
+        <Text style={styles.headerText}>Galery App</Text>
       </View>
       <FlatList
-        style={Styles.container}
+        style={styles.container}
         data={data}
         renderItem={renderImages}
         keyExtractor={(item, index) => item.id.toString()}
