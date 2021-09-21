@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, SafeAreaView, Image, StyleSheet} from 'react-native';
-import Styles from './Styles'
+import Styles from './Styles';
 
 export default function ImageListDetails({route}) {
   const props = route.params.imageData;
@@ -18,4 +18,3 @@ export default function ImageListDetails({route}) {
     </SafeAreaView>
   );
 }
-
