@@ -1,24 +1,21 @@
 import React from 'react';
 import {View, Text, SafeAreaView, Image, StyleSheet} from 'react-native';
+import Styles from './Styles'
 
 export default function ImageListDetails({route}) {
-  //console.log(route.params);
+  const props = route.params.imageData;
   return (
-    <SafeAreaView style={{flex:1}}>
-      <View style={styles.container}>
+    <SafeAreaView style={{flex: 1}}>
+      <View style={Styles.detailContainer}>
         <Image
           style={{
-            flex:1,
+            flex: 1,
           }}
-          source={{uri: route.params.imageData.download_url}}
+          source={{uri: props.download_url}}
         />
       </View>
-      <Text style={styles.authorText}>{route.params.imageData.author}</Text>
+      <Text style={Styles.detailAuthorText}>{props.author}</Text>
     </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-    container:{padding:30,flex:1},
-    authorText:{textAlign:'center'}
-})
